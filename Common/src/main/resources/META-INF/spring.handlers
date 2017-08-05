@@ -1,0 +1,2 @@
+http\://www.matcha.com/myBean=com.matcha.xml.MyBeanXMLNamespaceHandler
+http\://www.matcha.com/description=com.matcha.xml.DescriptionXMLNamespaceHandler

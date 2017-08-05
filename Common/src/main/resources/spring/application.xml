@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:myBean="http://www.matcha.com/myBean"
+       xmlns:description="http://www.matcha.com/description"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.matcha.com/myBean http://www.matcha.com/myBean/myBean.xsd
+       http://www.matcha.com/description http://www.matcha.com/description/description.xsd">
+    <bean name="threadPool" class="com.matcha.lifecycle.ThreadPoolSmartLifecycle"></bean>
+
+    <bean name="userManager" class="com.matcha.app.UserManager"></bean>
+
+    <bean name="userRegisterService" class="com.matcha.app.UserRegisterService" lazy-init="true">
+        <property name="userManager" ref="userManager"></property>
+        <description:description name="description" value="the description"></description:description>
+    </bean>
+
+    <bean name="selfBean,self_bean,SELF" class="com.matcha.self.SelfBean" autowire="byType" lazy-init="true"></bean>
+
+    <bean name="self" class="com.matcha.self.Self" lazy-init="true">
+        <property name="name">
+            <value type="java.lang.String">Riven</value>
+        </property>
+        <property name="age">
+            <value type="int">24</value>
+        </property>
+        <property name="evaluates">
+            <array value-type="java.lang.String">
+                <value type="java.lang.String">Best Riven</value>
+                <value type="java.lang.String">Ha Ha Ha</value>
+                <value type="java.lang.String">Wa</value>
+            </array>
+        </property>
+    </bean>
+
+    <myBean:myBean id="myFirstBean" name="firstBean,bean" class="com.matcha.app.MyFirstBean">
+        <myBean:dependence>
+            <myBean:ref name="userManager" value="userManager"></myBean:ref>
+            <myBean:value name="description" value="my first bean"></myBean:value>
+        </myBean:dependence>
+    </myBean:myBean>
+
+    <bean name="replacedMethod" class="com.matcha.app.overried.ReplacedMethod" lazy-init="true">
+        <replaced-method name="method" replacer="splitMethod">
+            <arg-type match="java.lang.String"></arg-type>
+            <arg-type match="java.lang.String"></arg-type>
+        </replaced-method>
+    </bean>
+
+    <bean name="splitMethod" class="com.matcha.app.overried.SplitMethod" lazy-init="true"></bean>
+
+    <bean name="userManagerGetter" class="com.matcha.app.UserManagerGetter" lazy-init="true">
+        <lookup-method name="getUserManager" bean="userManager"></lookup-method>
+    </bean>
+
+    <bean name="circulationReferenceA" class="com.matcha.app.circulation.CirculationReferenceA" lazy-init="true">
+        <property name="reference" ref="circulationReferenceB"></property>
+    </bean>
+
+    <bean name="circulationReferenceB" class="com.matcha.app.circulation.CirculationReferenceB" lazy-init="true">
+        <property name="reference" ref="circulationReferenceA"></property>
+    </bean>
+
+    <bean name="carFactory" class="com.matcha.app.factory.CarFactory"></bean>
+
+    <bean name="car" class="com.matcha.app.model.Car" scope="prototype"
+          factory-bean="carFactory" factory-method="createCar"></bean>
+
+    <bean name="pen" class="com.matcha.app.factory.PenFactory"></bean>
+
+    <bean name="myBeanPostProcessor" class="com.matcha.processor.MyBeanPostProcessor">
+        <constructor-arg name="path">
+            <value type="java.lang.String">file:///Users/Matcha/Work/ideaWorkSpace/learnspace/LearnSpring/output/BeanInitLog.txt</value>
+        </constructor-arg>
+    </bean>
+
+    <bean name="myApplicationListener" class="com.matcha.processor.MyApplicationListener"></bean>
+
+    <bean name="autoWireBean" class="com.matcha.app.AutoWireBean" autowire="byName"></bean>
+
+    <bean name="applicationContextAwareBean" class="com.matcha.app.ApplicationContextAwareBean"></bean>
+
+    <bean name="testConstructor" class="com.matcha.app.TestConstructor" lazy-init="true"></bean>
+</beans>

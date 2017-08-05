@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:myBean="http://www.matcha.com/myBean"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.matcha.com/myBean http://www.matcha.com/myBean/myBean.xsd">
+
+    <bean name="userManager" class="com.matcha.app.UserManager"></bean>
+
+    <bean name="userRegisterService" class="com.matcha.app.UserRegisterService">
+        <property name="userManager" ref="userManager"></property>
+        <property name="description" value="the description"></property>
+    </bean>
+
+    <bean name="springAdvice" class="com.matcha.aop.SpringAdvice"></bean>
+
+    <bean name="myAdvice" class="com.matcha.aop.MyAdvice"></bean>
+
+    <aop:config>
+        <aop:pointcut id="userRegisterServicePointCut" expression="bean(userRegisterService))"></aop:pointcut>
+
+        <aop:aspect id="myAdvice" ref="myAdvice">
+            <aop:before method="beforeMethod" pointcut-ref="userRegisterServicePointCut"></aop:before>
+            <aop:after method="afterMethod" pointcut-ref="userRegisterServicePointCut"></aop:after>
+            <aop:around method="aroundMethod" pointcut-ref="userRegisterServicePointCut"></aop:around>
+            <aop:after-returning method="afterReturning" pointcut-ref="userRegisterServicePointCut"
+                                 returning="returnValue"></aop:after-returning>
+        </aop:aspect>
+    </aop:config>
+
+    <myBean:myBean id="myFirstBean" name="firstBean,bean" class="com.matcha.app.MyFirstBean">
+        <myBean:dependence>
+            <myBean:ref name="userManager" value="userManager"></myBean:ref>
+            <myBean:value name="description" value="my first bean"></myBean:value>
+        </myBean:dependence>
+    </myBean:myBean>
+
+    <bean name="userRegisterService2" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces" value="com.matcha.app.IUserRegisterService"></property>
+        <property name="target" ref="userRegisterService"></property>
+        <property name="interceptorNames">
+            <list>
+                <value>springAdvice</value>
+            </list>
+        </property>
+    </bean>
+</beans>
