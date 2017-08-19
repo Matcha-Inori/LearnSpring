@@ -4,5 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <import resource="dbConfig.xml"></import>
+    <!-- mybatis的部分稍后再看，这里先把spring事务看完 -->
+    <!-- <import resource="mybatis.xml"></import> -->
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="basicDataSource"></property>
+    </bean>
 
 </beans>

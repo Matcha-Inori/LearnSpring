@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:properties/dbcp2.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="mySqlDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://192.168.56.8:3306/spring"></property>
+        <property name="username" value="matcha"></property>
+        <property name="password" value="matcha"></property>
+    </bean>
+
+    <bean id="basicDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="${driverClassName}"></property>
+        <property name="url" value="${url}"></property>
+        <property name="username" value="${username}"></property>
+        <property name="password" value="${password}"></property>
+        <property name="defaultAutoCommit" value="${defaultAutoCommit}"></property>
+        <!-- 设置数据库事务隔离级别为TRANSACTION_REPEATABLE_READ -->
+        <property name="defaultTransactionIsolation" value="${defaultTransactionIsolation}"></property>
+        <property name="maxTotal" value="${maxTotal}"></property>
+        <property name="initialSize" value="${initialSize}"></property>
+        <property name="maxIdle" value="${maxIdle}"></property>
+        <property name="minIdle" value="${minIdle}"></property>
+        <!-- 池在抛出异常前等待的一个连接被归还的最大毫秒数设置为3分钟 -->
+        <property name="maxWaitMillis" value="${maxWaitMillis}"></property>
+        <!-- 每30秒运行一次空闲连接回收器 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"></property>
+    </bean>
+
+</beans>

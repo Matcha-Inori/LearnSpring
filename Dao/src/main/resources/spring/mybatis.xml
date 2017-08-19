@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="dbConfig.xml"></import>
+
+    <bean id="mybatisSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="basicDataSource"></property>
+    </bean>
+
+    <bean id="mybatisScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.matcha.dao"></property>
+        <property name="sqlSessionFactoryBeanName" value="mybatisSessionFactory"></property>
+    </bean>
+
+</beans>
