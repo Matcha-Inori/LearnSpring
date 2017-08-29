@@ -68,11 +68,12 @@
 
     <bean name="pen" class="com.matcha.app.factory.PenFactory"></bean>
 
-    <bean name="myBeanPostProcessor" class="com.matcha.processor.MyBeanPostProcessor">
-        <constructor-arg name="path">
-            <value type="java.lang.String">file:///Users/Matcha/Work/ideaWorkSpace/learnspace/LearnSpring/output/BeanInitLog.txt</value>
-        </constructor-arg>
-    </bean>
+    <!-- 这个本来是拿来记录生成了的bean的，输出日志路径在工程变化后消失了，反正先把他关了吧 -->
+    <!--<bean name="myBeanPostProcessor" class="com.matcha.processor.MyBeanPostProcessor">-->
+        <!--<constructor-arg name="path">-->
+            <!--<value type="java.lang.String">file:///Users/Matcha/Work/ideaWorkSpace/learnspace/LearnSpring/output/BeanInitLog.txt</value>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
 
     <bean name="myApplicationListener" class="com.matcha.processor.MyApplicationListener"></bean>
 

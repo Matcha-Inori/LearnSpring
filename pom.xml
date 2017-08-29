@@ -11,8 +11,9 @@
 
     <modules>
         <module>Common</module>
-        <module>Transaction</module>
+        <module>Dao</module>
         <module>MVC</module>
+        <module>Service</module>
     </modules>
 
     <properties>

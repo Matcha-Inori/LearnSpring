@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <import resource="dbConfig.xml"></import>
     <!-- mybatis的部分稍后再看，这里先把spring事务看完 -->
@@ -10,5 +14,25 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="basicDataSource"></property>
     </bean>
+
+    <bean id="bankTransactionDefinition" class="org.springframework.transaction.support.DefaultTransactionDefinition">
+        <property name="isolationLevel" value="2"></property>
+        <property name="propagationBehavior" value="0"></property>
+    </bean>
+
+    <bean id="bankDao" class="com.matcha.dao.BankDao">
+        <property name="dataSource" ref="basicDataSource"></property>
+    </bean>
+
+    <tx:advice id="bankTransactionAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="transfer" isolation="READ_COMMITTED" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="bankPointCut" expression="bean(bankDao)"></aop:pointcut>
+        <aop:advisor id="bankAdvisor" advice-ref="bankTransactionAdvice" pointcut-ref="bankPointCut"></aop:advisor>
+    </aop:config>
 
 </beans>
