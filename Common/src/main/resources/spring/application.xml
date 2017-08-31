@@ -82,4 +82,18 @@
     <bean name="applicationContextAwareBean" class="com.matcha.app.ApplicationContextAwareBean"></bean>
 
     <bean name="testConstructor" class="com.matcha.app.TestConstructor" lazy-init="true"></bean>
+
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean id="myConverter" class="com.matcha.convert.MyConverter"></bean>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="testConverterBean" class="com.matcha.app.TestConverterBean">
+        <property name="urlProperty">
+            <value type="java.net.URL">spring/application.xml</value>
+        </property>
+    </bean>
 </beans>

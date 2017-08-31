@@ -7,11 +7,14 @@
 
     <bean id="mybatisSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="basicDataSource"></property>
+        <property name="configLocation">
+            <value type="org.springframework.core.io.Resource">classpath:mybatis/config.xml</value>
+        </property>
     </bean>
 
-    <bean id="mybatisScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.matcha.dao"></property>
-        <property name="sqlSessionFactoryBeanName" value="mybatisSessionFactory"></property>
-    </bean>
+    <!--<bean id="mybatisScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+        <!--<property name="basePackage" value="com.matcha.dao"></property>-->
+        <!--<property name="sqlSessionFactoryBeanName" value="mybatisSessionFactory"></property>-->
+    <!--</bean>-->
 
 </beans>
