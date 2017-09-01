@@ -14,6 +14,7 @@
         <module>Dao</module>
         <module>MVC</module>
         <module>Service</module>
+        <module>Model</module>
     </modules>
 
     <properties>
