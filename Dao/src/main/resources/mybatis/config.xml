@@ -2,10 +2,11 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.matcha.app.model.User" alias="User"></typeAlias>
+        <typeAlias type="com.matcha.model.User" alias="User"></typeAlias>
     </typeAliases>
 
     <mappers>
         <mapper resource="mybatis/user.xml"></mapper>
+        <mapper class="com.matcha.mapper.BookMapper"></mapper>
     </mappers>
 </configuration>

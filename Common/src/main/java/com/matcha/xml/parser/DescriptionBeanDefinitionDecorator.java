@@ -1,6 +1,6 @@
 package com.matcha.xml.parser;
 
-import com.matcha.app.util.StringUtil;
+import com.matcha.util.StringUtil;
 import com.matcha.xml.attribute.DescriptionAttribute;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.PropertyValue;

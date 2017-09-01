@@ -1,6 +1,6 @@
 package com.matcha.reflect;
 
-import com.matcha.app.util.StringUtil;
+import com.matcha.util.StringUtil;
 
 import java.io.IOException;
 import java.io.InputStream;

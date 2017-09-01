@@ -1,8 +1,8 @@
 package com.matcha.aop;
 
-import com.matcha.app.IUserRegisterService;
-import com.matcha.app.MyFirstBean;
-import com.matcha.app.model.User;
+import com.matcha.IUserRegisterService;
+import com.matcha.MyFirstBean;
+import com.matcha.model.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.ConfigurableApplicationContext;

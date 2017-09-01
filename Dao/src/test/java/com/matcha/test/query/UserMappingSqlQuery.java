@@ -1,6 +1,6 @@
 package com.matcha.test.query;
 
-import com.matcha.app.model.User;
+import com.matcha.model.User;
 import org.springframework.jdbc.object.MappingSqlQuery;
 
 import java.sql.ResultSet;

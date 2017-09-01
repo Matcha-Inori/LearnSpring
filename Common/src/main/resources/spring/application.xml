@@ -8,9 +8,9 @@
        http://www.matcha.com/description http://www.matcha.com/description/description.xsd">
     <bean name="threadPool" class="com.matcha.lifecycle.ThreadPoolSmartLifecycle"></bean>
 
-    <bean name="userManager" class="com.matcha.app.UserManager"></bean>
+    <bean name="userManager" class="com.matcha.UserManager"></bean>
 
-    <bean name="userRegisterService" class="com.matcha.app.UserRegisterService" lazy-init="true">
+    <bean name="userRegisterService" class="com.matcha.UserRegisterService" lazy-init="true">
         <property name="userManager" ref="userManager"></property>
         <description:description name="description" value="the description"></description:description>
     </bean>
@@ -33,40 +33,40 @@
         </property>
     </bean>
 
-    <myBean:myBean id="myFirstBean" name="firstBean,bean" class="com.matcha.app.MyFirstBean">
+    <myBean:myBean id="myFirstBean" name="firstBean,bean" class="com.matcha.MyFirstBean">
         <myBean:dependence>
             <myBean:ref name="userManager" value="userManager"></myBean:ref>
             <myBean:value name="description" value="my first bean"></myBean:value>
         </myBean:dependence>
     </myBean:myBean>
 
-    <bean name="replacedMethod" class="com.matcha.app.overried.ReplacedMethod" lazy-init="true">
+    <bean name="replacedMethod" class="com.matcha.overried.ReplacedMethod" lazy-init="true">
         <replaced-method name="method" replacer="splitMethod">
             <arg-type match="java.lang.String"></arg-type>
             <arg-type match="java.lang.String"></arg-type>
         </replaced-method>
     </bean>
 
-    <bean name="splitMethod" class="com.matcha.app.overried.SplitMethod" lazy-init="true"></bean>
+    <bean name="splitMethod" class="com.matcha.overried.SplitMethod" lazy-init="true"></bean>
 
-    <bean name="userManagerGetter" class="com.matcha.app.UserManagerGetter" lazy-init="true">
+    <bean name="userManagerGetter" class="com.matcha.UserManagerGetter" lazy-init="true">
         <lookup-method name="getUserManager" bean="userManager"></lookup-method>
     </bean>
 
-    <bean name="circulationReferenceA" class="com.matcha.app.circulation.CirculationReferenceA" lazy-init="true">
+    <bean name="circulationReferenceA" class="com.matcha.circulation.CirculationReferenceA" lazy-init="true">
         <property name="reference" ref="circulationReferenceB"></property>
     </bean>
 
-    <bean name="circulationReferenceB" class="com.matcha.app.circulation.CirculationReferenceB" lazy-init="true">
+    <bean name="circulationReferenceB" class="com.matcha.circulation.CirculationReferenceB" lazy-init="true">
         <property name="reference" ref="circulationReferenceA"></property>
     </bean>
 
-    <bean name="carFactory" class="com.matcha.app.factory.CarFactory"></bean>
+    <bean name="carFactory" class="com.matcha.factory.CarFactory"></bean>
 
-    <bean name="car" class="com.matcha.app.model.Car" scope="prototype"
+    <bean name="car" class="com.matcha.model.Car" scope="prototype"
           factory-bean="carFactory" factory-method="createCar"></bean>
 
-    <bean name="pen" class="com.matcha.app.factory.PenFactory"></bean>
+    <bean name="pen" class="com.matcha.factory.PenFactory"></bean>
 
     <!-- 这个本来是拿来记录生成了的bean的，输出日志路径在工程变化后消失了，反正先把他关了吧 -->
     <!--<bean name="myBeanPostProcessor" class="com.matcha.processor.MyBeanPostProcessor">-->
@@ -77,11 +77,11 @@
 
     <bean name="myApplicationListener" class="com.matcha.processor.MyApplicationListener"></bean>
 
-    <bean name="autoWireBean" class="com.matcha.app.AutoWireBean" autowire="byName"></bean>
+    <bean name="autoWireBean" class="com.matcha.AutoWireBean" autowire="byName"></bean>
 
-    <bean name="applicationContextAwareBean" class="com.matcha.app.ApplicationContextAwareBean"></bean>
+    <bean name="applicationContextAwareBean" class="com.matcha.ApplicationContextAwareBean"></bean>
 
-    <bean name="testConstructor" class="com.matcha.app.TestConstructor" lazy-init="true"></bean>
+    <bean name="testConstructor" class="com.matcha.TestConstructor" lazy-init="true"></bean>
 
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
@@ -91,7 +91,7 @@
         </property>
     </bean>
 
-    <bean id="testConverterBean" class="com.matcha.app.TestConverterBean">
+    <bean id="testConverterBean" class="com.matcha.TestConverterBean">
         <property name="urlProperty">
             <value type="java.net.URL">spring/application.xml</value>
         </property>

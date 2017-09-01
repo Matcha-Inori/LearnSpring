@@ -1,6 +1,6 @@
 package com.matcha.test;
 
-import com.matcha.app.model.User;
+import com.matcha.model.User;
 import com.matcha.test.query.UserMappingSqlQuery;
 import com.matcha.test.query.UserSqlUpdate;
 import org.junit.Test;

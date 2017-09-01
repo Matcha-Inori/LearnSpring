@@ -1,8 +1,6 @@
 package com.matcha.thread;
 
-import com.matcha.app.circulation.CirculationReferenceA;
-import com.matcha.app.circulation.CirculationReferenceB;
-import com.matcha.app.circulation.ICirculationReference;
+import com.matcha.circulation.ICirculationReference;
 import org.springframework.context.ApplicationContext;
 
 import java.util.concurrent.BrokenBarrierException;

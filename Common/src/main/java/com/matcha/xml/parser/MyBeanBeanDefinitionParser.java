@@ -1,8 +1,8 @@
 package com.matcha.xml.parser;
 
-import com.matcha.app.util.ArrayUtil;
-import com.matcha.app.util.CollectionUtil;
-import com.matcha.app.util.StringUtil;
+import com.matcha.util.ArrayUtil;
+import com.matcha.util.CollectionUtil;
+import com.matcha.util.StringUtil;
 import com.matcha.xml.attribute.MyBeanAttribute;
 import com.matcha.xml.element.MyBeanElement;
 import org.springframework.beans.MutablePropertyValues;
