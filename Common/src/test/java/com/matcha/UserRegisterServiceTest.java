@@ -1,5 +1,6 @@
 package com.matcha;
 
+import com.matcha.bean.*;
 import com.matcha.circulation.ICirculationReference;
 import com.matcha.model.Car;
 import com.matcha.model.User;

@@ -1,4 +1,4 @@
-package com.matcha;
+package com.matcha.bean;
 
 import java.net.URL;
 

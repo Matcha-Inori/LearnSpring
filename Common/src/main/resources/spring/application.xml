@@ -8,9 +8,9 @@
        http://www.matcha.com/description http://www.matcha.com/description/description.xsd">
     <bean name="threadPool" class="com.matcha.lifecycle.ThreadPoolSmartLifecycle"></bean>
 
-    <bean name="userManager" class="com.matcha.UserManager"></bean>
+    <bean name="userManager" class="com.matcha.bean.UserManager"></bean>
 
-    <bean name="userRegisterService" class="com.matcha.UserRegisterService" lazy-init="true">
+    <bean name="userRegisterService" class="com.matcha.bean.UserRegisterService" lazy-init="true">
         <property name="userManager" ref="userManager"></property>
         <description:description name="description" value="the description"></description:description>
     </bean>
@@ -33,7 +33,7 @@
         </property>
     </bean>
 
-    <myBean:myBean id="myFirstBean" name="firstBean,bean" class="com.matcha.MyFirstBean">
+    <myBean:myBean id="myFirstBean" name="firstBean,bean" class="com.matcha.bean.MyFirstBean">
         <myBean:dependence>
             <myBean:ref name="userManager" value="userManager"></myBean:ref>
             <myBean:value name="description" value="my first bean"></myBean:value>
@@ -49,7 +49,7 @@
 
     <bean name="splitMethod" class="com.matcha.overried.SplitMethod" lazy-init="true"></bean>
 
-    <bean name="userManagerGetter" class="com.matcha.UserManagerGetter" lazy-init="true">
+    <bean name="userManagerGetter" class="com.matcha.bean.UserManagerGetter" lazy-init="true">
         <lookup-method name="getUserManager" bean="userManager"></lookup-method>
     </bean>
 
@@ -77,11 +77,11 @@
 
     <bean name="myApplicationListener" class="com.matcha.processor.MyApplicationListener"></bean>
 
-    <bean name="autoWireBean" class="com.matcha.AutoWireBean" autowire="byName"></bean>
+    <bean name="autoWireBean" class="com.matcha.bean.AutoWireBean" autowire="byName"></bean>
 
-    <bean name="applicationContextAwareBean" class="com.matcha.ApplicationContextAwareBean"></bean>
+    <bean name="applicationContextAwareBean" class="com.matcha.bean.ApplicationContextAwareBean"></bean>
 
-    <bean name="testConstructor" class="com.matcha.TestConstructor" lazy-init="true"></bean>
+    <bean name="testConstructor" class="com.matcha.bean.TestConstructor" lazy-init="true"></bean>
 
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
@@ -91,7 +91,7 @@
         </property>
     </bean>
 
-    <bean id="testConverterBean" class="com.matcha.TestConverterBean">
+    <bean id="testConverterBean" class="com.matcha.bean.TestConverterBean">
         <property name="urlProperty">
             <value type="java.net.URL">spring/application.xml</value>
         </property>

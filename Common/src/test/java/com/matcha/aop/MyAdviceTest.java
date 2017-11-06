@@ -1,7 +1,7 @@
 package com.matcha.aop;
 
-import com.matcha.IUserRegisterService;
-import com.matcha.MyFirstBean;
+import com.matcha.bean.IUserRegisterService;
+import com.matcha.bean.MyFirstBean;
 import com.matcha.model.User;
 import org.junit.Assert;
 import org.junit.Test;

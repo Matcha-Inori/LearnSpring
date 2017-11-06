@@ -1,4 +1,4 @@
-package com.matcha;
+package com.matcha.bean;
 
 /**
  * Created by Administrator on 2017/4/27.

@@ -1,6 +1,6 @@
 package com.matcha.convert;
 
-import com.matcha.TestConverterBean;
+import com.matcha.bean.TestConverterBean;
 import org.junit.Test;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
